@@ -1,26 +1,26 @@
 import tkinter as tk
 from ai import *
 
+LabelText = "2500\n\n\n\n\n\n\n\n\n\n\n+0\n-0\n\n\n\n\n\n\n\n\n\n\n\n\n-2500"
 
 win = tk.Tk()
-win.geometry("1002x522")
-win.title("visualisation")
+win.geometry("1052x522")
+win.title("visualization")
 win.config(bg="#000000")
-
 
 canvas = tk.Canvas(win, width=1000, height=500, bg="#232323")
 canvas.place(x=0, y=20)
 
-options = ["-2", "-1", "0", "1", "2"]
-rewards = [-2, -1, 0, 1, 2]
+text = tk.Label(win, text=LabelText, fg="#ffffff", bg="#232323")
+text.place(x=1002, y=20)
 
-VisualValue = 1
+colours = ["#ff0000", "#00ff00", "#ffff00", "#0000ff", "#ff00ff", "#00ffff", "#ffffff"]
+options = ["1", "2", "3", "4", "5"]
+rewards = [-2, -1, 0, 1, 2]
 
 ai = AI(options, rewards)
 
 i=0
-colours = ["#ff0000", "#00ff00", "#ffff00", "#0000ff", "#ff00ff", "#00ffff", "#ffffff"]
-
 while True:
     i += .1
     
@@ -32,4 +32,7 @@ while True:
 
     win.update()
     
-    if not (win.winfo_exists()): break
+    try:
+        win.winfo_exists()
+    except:
+        break
